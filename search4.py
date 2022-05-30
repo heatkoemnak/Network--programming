@@ -8,12 +8,13 @@
 import socket
 import ssl
 from urllib.parse import quote_plus
-request_text ="""\
+
+request_text = """\
 GET /search?q={}&format=json HTTP/1.1\r\n\
 Host: nominatiom.openstreetmap.org\r\n\
 User-Agent: Network Programming example search4.py\r\n\
-Connection: close\r\n
-\r\n
+Connection: close\r\n\
+\r\n\
 """
 
 def geocode(address):
@@ -24,11 +25,11 @@ def geocode(address):
     sock.sendall(request.encode('ascii'))
     raw_reply = b''
     while True:
-        more =sock.recv(4096)
+        more = sock.recv(4096)
         if not more:
             break
         raw_reply += more
-        print(raw_reply.decode('utf-8'))
+    print(raw_reply.decode('utf-8'))
 
-    if __name__== '__main__':
-        geocode('វិទ្យាល៍យព្រះយុគគន្ធរ')
+if __name__ == '__main__':
+    geocode('វិទ្យាល័យព្រះយុគន្ធរ')
